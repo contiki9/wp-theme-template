@@ -13,7 +13,7 @@ build
 /node_modules
 /styleguide
 
-# wordpress
+# wPrdPress
 
 !google*.html
 !wp-content/
