@@ -1,0 +1,35 @@
+# プロジェクト名
+name: alyssa style guide
+
+
+# スタイルガイドを生成するもとになるファイルを指定します
+source: ../docs/
+
+# sourceに指定したディレクトリ内の対象とする拡張子を指定します
+source_type: .scss
+
+# スタイルガイドに必要なファイルをコピーします
+dependencies:
+  - ../aigis/assets/
+  - ../docs/assets/css/
+  - ../docs/assets/js/
+
+# スタイルガイドを出力するディレクトリを指定します
+dest: ../styleguide/
+
+# スタイルガイドを生成するためのテンプレートファイルを指定します
+template_dir: ../aigis/template/
+
+# スタイルガイドを生成するために利用するテンプレートエンジンを指定します
+template_engine: jade
+
+# スタイルガイドとして出力されたファイルをコンソールに出力します
+log: true
+
+# スタイルガイドの元になったファイルで使用されている色を一覧化します
+color_palette: true
+
+#?
+output_collection:
+  - category
+  - tag
