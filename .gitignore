@@ -3,7 +3,7 @@
 *.org
 Thumbs.db
 desktop.ini
-.DS_Store
+/**/.DS_Store
 .buildpath
 .project
 .settings
@@ -19,6 +19,7 @@ build
 !wp-content/
 !wp-content/themes/
 !wp-content/themes/*
+wp-content/themes/**/.DS_Store
 
 # themes
 /**/images/*
