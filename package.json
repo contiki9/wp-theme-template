@@ -1,7 +1,7 @@
 {
-  "name": "wordpress theme",
+  "name": "WordPressTheme",
   "version": "1.0.0",
-  "description": "",
+  "description": "WordPress themes gulp",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
