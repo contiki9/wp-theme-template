@@ -13,8 +13,13 @@ WordPressのテーマをgulpで作成するためのものです。
 # 使い方
 
 ## インストール
-node.jsとgulpをインストールした上でしてください。
+```
+git clone https://github.com/contiki9/wp-theme-template.git
+```
+clone後WordPressの本体をインストールしてください。
 
+
+下記コマンドはnode.jsとgulpをインストールした上でしてください。
 ```
 npm install
 ```

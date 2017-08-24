@@ -29,13 +29,13 @@ var themeName = 'theme-name';
 
 //開発用ディレクトリ
 var develop = {
-    'root': 'wp-content/themes/'+themeName+'/assets/',
+    'root': 'wp-content/themes/'+themeName+'/assets/'
 }
 
 //コンパイル先
 var release = {
     'root': 'wp-content/themes/'+themeName+'/',
-    'sass': 'wp-content/themes/'+themeName+'/',
+    'sass': 'wp-content/themes/'+themeName+'/'
 }
 
 var AUTOPREFIXER_BROWSERS = [
@@ -71,7 +71,7 @@ gulp.task('sass', function () {
         .pipe(sass())
         .pipe(pleeease({
             autoprefixer: {"browsers": AUTOPREFIXER_BROWSERS},
-            minifier: false,
+            minifier: false
         }))
         .pipe(gulp.dest(release.sass));
 });
