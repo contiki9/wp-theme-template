@@ -24,12 +24,9 @@ build
 wp-content/themes/**/.DS_Store
 
 # themes
-/**/images/*
-/**/js/*
-
-!**/assets/
-!**/assets/**
-
+wp-content/themes/**/images/*
+wp-content/themes/**/js/*
+wp-content/themes/**/*.css
 
 # original file
 

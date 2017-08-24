@@ -12,11 +12,11 @@
 
 /* Framework
    ---------------------------------------------------------- */
-//@import "vendor/skeleton-scss/skeleton";
+@import "vendor/skeleton-scss/skeleton";
 
-@import "vendor/uikit/variables";
-@import "vendor/uikit/mixins";
-@import "vendor/uikit/uikit";
+//@import "vendor/uikit/variables";
+//@import "vendor/uikit/mixins";
+//@import "vendor/uikit/uikit";
 
 /*---------------------------------------------------------------------
 # Base
@@ -32,9 +32,9 @@
 
 /* Foundation
    ---------------------------------------------------------- */
-@import "base/font";
-@import "base/reset";
-@import "base/base";
+//@import "base/font";
+//@import "base/reset";
+//@import "base/base";
 
 /* parts
    ---------------------------------------------------------- */

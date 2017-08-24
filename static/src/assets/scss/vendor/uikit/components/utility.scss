@@ -13,11 +13,13 @@
 //                  `uk-preserve-width`
 //                  `uk-border-*`
 //                  `uk-box-shadow-*`
+//                  `uk-box-shadow-bottom`
 //                  `uk-dropcap`
 //                  `uk-leader`
 //                  `uk-logo`
 //                  `uk-svg`
 //                  `uk-blend-*`
+//                  `uk-transform-*`
 //                  `uk-transform-origin-*`
 //
 // States:          `uk-disabled`
@@ -43,6 +45,11 @@ $height-large-height:                            450px !default;
 $border-rounded-border-radius:                   5px !default;
 
 $box-shadow-duration:                            0.1s !default;
+
+$box-shadow-bottom-height:                            30px !default;
+$box-shadow-bottom-border-radius:                     100% !default;
+$box-shadow-bottom-background:                        #444 !default;
+$box-shadow-bottom-blur:                              20px !default;
 
 $dropcap-margin-right:                           10px !default;
 $dropcap-font-size:                              (($global-line-height * 3) * 1em) !default;
@@ -182,7 +189,9 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
  * 2. Create position context
  * 3. Prevent content overflow
  * 4. Behave like most inline-block elements
- * 5. Clip child elements
+ * 5. Force hardware acceleration without creating a new stacking context
+ *    to fix 1px glitch when combined with overlays and transitions in Webkit
+ * 6. Clip child elements
  */
 
 [class*='uk-inline'] {
@@ -194,10 +203,12 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
     max-width: 100%;
     /* 4 */
     vertical-align: middle;
+    /* 5 */
+    -webkit-backface-visibility: hidden;
 }
 
 .uk-inline-clip {
-    /* 5 */
+    /* 6 */
     overflow: hidden;
 }
 
@@ -320,6 +331,47 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
 .uk-box-shadow-hover-xlarge:hover { box-shadow: $global-xlarge-box-shadow; }
 
 
+/* Box-shadow bottom
+ ========================================================================== */
+
+/*
+ * 1. Set position.
+ * 2. Set style
+ * 3. Blur doesn't work on pseudo elements with negative `z-index` in Edge.
+ *    Solved by using `before` and add position context to child elements.
+ */
+
+@supports (filter: blur(0)) or (-webkit-filter: blur(0)) {
+
+    .uk-box-shadow-bottom {
+        display: inline-block;
+        position: relative;
+        max-width: 100%;
+        vertical-align: middle;
+    }
+
+    .uk-box-shadow-bottom::before {
+        content: '';
+        /* 1 */
+        position: absolute;
+        bottom: (-$box-shadow-bottom-height);
+        left: 0;
+        right: 0;
+        /* 2 */
+        height: $box-shadow-bottom-height;
+        border-radius: $box-shadow-bottom-border-radius;
+        background: $box-shadow-bottom-background;
+        -webkit-filter: blur($box-shadow-bottom-blur);
+        filter: blur($box-shadow-bottom-blur);
+        @if(mixin-exists(hook-box-shadow-bottom)) {@include hook-box-shadow-bottom();}
+    }
+
+    /* 3 */
+    .uk-box-shadow-bottom > * { position: relative; }
+
+}
+
+
 /* Drop cap
  ========================================================================== */
 
@@ -404,13 +456,16 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
 /*
  * 1. Fill all SVG elements with the current text color if no `fill` attribute is set
  * 2. Set the fill and stroke color of all SVG elements to the current text color
+ * 3. Fix for uppercase attribute names in Edge. Will be fixed in Windows 10 builds 16251+
  */
 
 /* 1 */
 .uk-svg,
 /* 2 */
-.uk-svg:not(.uk-preserve) [fill*='#']:not(.uk-preserve) { fill: currentcolor; }
-.uk-svg:not(.uk-preserve) [stroke*='#']:not(.uk-preserve) { stroke: currentcolor; }
+.uk-svg:not(.uk-preserve) [fill*='#']:not(.uk-preserve),
+.uk-svg:not(.uk-preserve) [FILL*='#']:not(.uk-preserve) { fill: currentcolor; } // 3
+.uk-svg:not(.uk-preserve) [stroke*='#']:not(.uk-preserve),
+.uk-svg:not(.uk-preserve) [STROKE*='#']:not(.uk-preserve) { stroke: currentcolor; } // 3
 
 /*
  * Fix Firefox blurry SVG rendering: https://bugzilla.mozilla.org/show_bug.cgi?id=1046835
@@ -471,6 +526,15 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
 .uk-blend-luminosity { mix-blend-mode: luminosity; }
 
 
+/* Transform
+========================================================================== */
+
+.uk-transform-center {
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
 /* Transform Origin
 ========================================================================== */
 
@@ -521,6 +585,7 @@ $dragover-box-shadow:                            0 0 20px rgba(100,100,100,0.3) 
 @if(mixin-exists(hook-utility-misc)) {@include hook-utility-misc();}
 
 // @mixin hook-panel-scrollable(){}
+// @mixin hook-box-shadow-bottom(){}
 // @mixin hook-dropcap(){}
 // @mixin hook-leader(){}
 // @mixin hook-logo(){}
