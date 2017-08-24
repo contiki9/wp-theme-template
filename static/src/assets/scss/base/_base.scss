@@ -1,0 +1,362 @@
+/*
+ * Base Style
+*/
+body, html {
+  @extend .ex-font-family;
+  @include cnt-font-size($font-nml,16);
+  color: $color-text;
+  min-height:100vh;
+}
+
+body {
+  /* アンチエイリアスを指定する */
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  /* メトリクスカーニングを指定する */
+  font-kerning: normal;
+  background-color: $color-bg;
+  a {
+    color: $color-link;
+    &:hover{
+      transition: all .5s;
+      color:darken($color-link,30%);
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend .ex-font-family;
+  line-height: 1.5;
+}
+
+p {
+  font-size:1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+ul,ol,li,dl,dd,dt{
+  list-style: none;
+  @include margin(null 0);
+  @include padding(null 0);
+}
+
+//ネストされたリストのマージンをリセットします。
+li {
+  > ul, > ol {
+    margin-bottom: 0;
+  }
+}
+
+//`dt`と`dd`の左端を揃えます。
+dd {
+  margin-left: 0;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+a {
+  text-decoration: none;
+  color: $color-link;
+  &:hover{
+    color: $color-link;
+    text-decoration: none;
+    transition: all .5s;
+    color:darken($color-link,30%);
+  }
+  &:visited {
+    color: $color-link;
+  }
+
+}
+
+//フルードイメージにします。
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+//日本語では斜体を使用しないためリセットします。
+[lang="ja"] {
+  i,
+  cite,
+  em,
+  address,
+  dfn {
+    font-style: normal;
+  }
+}
+
+code,
+pre {
+  font-family: Consolas, Menlo, Courier, monospace;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol, dl,
+blockquote, p, address,
+hr,
+table,
+fieldset, figure,
+pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+label{
+  font-weight:normal;
+}
+
+[src$=".svg"], [data$=".svg"]{
+  width:auto;
+}
+figure{
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+// Forms
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+button {
+  display: inline-block;
+  padding: 10px 30px;
+  color: $color-link;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: $global-radius;
+  border: 1px solid $color-border;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+input {
+  &[type="submit"],
+  &[type="reset"],
+  &[type="button"] {
+    display: inline-block;
+    padding: .5rem 30px;
+    color: $color-link;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border-radius: $global-radius;
+    border: 1px solid $color-border;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+}
+
+
+button:hover {
+  color: $gray-dark;
+  border-color: lighten($gray-dark, 33.3%);
+  outline: 0;
+}
+
+input {
+  &[type="submit"]:hover,
+  &[type="reset"]:hover,
+  &[type="button"]:hover {
+    color: $gray-dark;
+    border-color: lighten($gray-dark, 33.3%);
+    outline: 0;
+  }
+}
+
+
+button:focus {
+  color: $gray-dark;
+  border-color: lighten($gray-dark, 33.3%);
+  outline: 0;
+}
+
+input {
+  &[type="submit"]:focus,
+  &[type="reset"]:focus,
+  &[type="button"]:focus {
+    color: $gray-dark;
+    border-color: lighten($gray-dark, 33.3%);
+    outline: 0;
+  }
+}
+
+input {
+  &[type="submit"].button-primary,
+  &[type="reset"].button-primary,
+  &[type="button"].button-primary {
+    color: #fff;
+    background-color: #FFF;
+    border-color: $color-border;
+  }
+}
+
+button.button-primary:hover {
+  color: #fff;
+  background-color: $color-link;
+  border-color: $color-link;
+}
+
+input {
+  &[type="submit"].button-primary:hover,
+  &[type="reset"].button-primary:hover,
+  &[type="button"].button-primary:hover {
+    color: #fff;
+    background-color: $color-link;
+    border-color: $color-link;
+  }
+}
+
+button.button-primary:focus {
+  color: #fff;
+  background-color: $color-link;
+  border-color: $color-link;
+}
+
+input {
+  &[type="submit"].button-primary:focus,
+  &[type="reset"].button-primary:focus,
+  &[type="button"].button-primary:focus {
+    color: #fff;
+    background-color: $color-link;
+    border-color: $color-link;
+  }
+  &[type="email"],
+  &[type="number"],
+  &[type="search"],
+  &[type="text"],
+  &[type="tel"],
+  &[type="url"],
+  &[type="password"] {
+    height: 38px;
+    padding: 6px 10px; // The 6px vertically centers text on FF, ignored by Webkit
+    background-color: #fff;
+    border: 1px solid lighten($color-border, 8.8%);
+    border-radius: $global-radius;
+    box-shadow: none;
+    box-sizing: border-box;
+    border-color: $color-border;
+  }
+}
+
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem;
+}
+
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 2.5rem;
+}
+
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px;
+  background-color: #fff;
+  border: 1px solid lighten($color-border, 8.8%);
+  border-radius: $global-radius;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+// Removes awkward default styles on some inputs for iOS
+input {
+  &[type="email"],
+  &[type="number"],
+  &[type="search"],
+  &[type="text"],
+  &[type="tel"],
+  &[type="url"],
+  &[type="password"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+input {
+  &[type="email"]:focus,
+  &[type="number"]:focus,
+  &[type="search"]:focus,
+  &[type="text"]:focus,
+  &[type="tel"]:focus,
+  &[type="url"]:focus,
+  &[type="password"]:focus {
+    border: 1px solid $color-link;
+    outline: 0;
+  }
+}
+
+textarea:focus,
+select:focus {
+  border: 1px solid $color-link;
+  outline: 0;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600;
+}
+
+fieldset {
+  padding: 0;
+  border-width: 0;
+}
+
+input {
+  &[type="checkbox"],
+  &[type="radio"] {
+    display: inline;
+  }
+}
+
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal;
+}
+
+

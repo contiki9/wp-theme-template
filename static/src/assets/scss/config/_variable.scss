@@ -1,0 +1,55 @@
+// --------------------------------------------------
+//Base Color
+// --------------------------------------------------
+$color-bg:#FFF !default;;//背景色
+$color-text: #3F3F3F !default;;//基本文字色
+$color-link: #03a9f4 !default;;//基本リンク色
+$color-accent: #fdd835 !default;//基本アクセント色
+$color-border:#cfd8dc!default;//基本線色
+
+
+// --------------------------------------------------
+//Gray Color
+// --------------------------------------------------
+$gray-lighter:                    #E6EAEF;
+$gray-light:                      #CED0DB;
+$gray:                            #6D6F7F;
+$gray-dark:                       #3F4351;
+$gray-darker:                     #252730;
+
+// --------------------------------------------------
+//Font Size
+// --------------------------------------------------
+//単位はピクセル計算
+$font-xlrg:20;
+$font-lrg:18;
+$font-nml:16;
+$font-sml:12;
+$font-xsml:10;
+
+// --------------------------------------------------
+//// Easings
+// --------------------------------------------------
+$ease-in-cubic:                   cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$ease-out-cubic:                  cubic-bezier(0.215, 0.61, 0.355, 1);
+$ease-in-out-cubic:               cubic-bezier(0.645, 0.045, 0.355, 1);
+$ease-in-out-expo:                cubic-bezier(1, 0, 0, 1);
+$ease-out-back:                   cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$ease-out-quint:                  cubic-bezier(.23,1,.32,1);
+
+// --------------------------------------------------
+//Setting
+// --------------------------------------------------
+$container:960px;//Containerサイズ
+$global-radius:4px;
+//breakpointサイズ
+//breakpointが１津の場合は’brk’を使用しています。
+$breakpoints: (
+  'brk': 'screen and (max-width: 640px)',
+  'sp': 'screen and (max-width: 400px)',
+  'tb': 'screen and (max-width: 768px)',
+  'pc': 'screen and (min-width: 641px)',
+) !default;
+
+
+

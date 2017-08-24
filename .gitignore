@@ -4,16 +4,18 @@
 Thumbs.db
 desktop.ini
 /**/.DS_Store
+.DS_Store
 .buildpath
 .project
 .settings
 *.tmproj
 build
 .idea/*
+!npm-debug.log
 /node_modules
 /styleguide
 
-# wPrdPress
+# WordPress
 
 !google*.html
 !wp-content/
