@@ -1,0 +1,52 @@
+//- inlide file
+extends ./_include/_layout
+include ./_include/_mixin
+
+append variables
+    //- Required
+    - var pageTitle= "";
+    - var pageDescription= site.description.home;
+    - var pageKeywords= site.keywords;
+    //- Optional
+    - var pageOgpTitle= "site.name";
+    - var pageOgpImage= site.ogpImage
+    - var pageLang= "ja";
+    - var pageOgpType= "website";
+    //- Not modified
+    - var pageUrl= relativePath;
+    - var pageDir= './';
+
+
+    block meta
+
+    block link
+
+    block script
+
+block body
+    body#home
+        +header(pageDir,'home')
+
+        +breadcrumb(
+        {pageName: '2階層目', dir: 'second/', next: true},
+        {pageName: '3階層目', dir: 'third/', next: false}
+        )
+        h1 PR用です
+        .tes
+            include ./_include/test/_html_tag
+            include ./_include/test/_wordpress
+        +footer()
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+//- inlide file
+extends /_include/_layout
+include /_include/_mixin
+
+append variables
+    //- Required
+    - var pageTitle= "";
+    - var pageDescription= site.description;
+    - var pageKeywords= site.keywords;
+    //- Optional
+    - var pageOgpTitle= "";
+    - var pageOgpImage= site.ogpImage
+    - var pageLang= "ja";
+    - var pageOgpType= "website";
+
+    //- Not modified
+    - var pageUrl= relativePath;
+    - var pageDir= '../';
+
+    block meta
+
+    block link
+
+    block script
+
+block body
+    body#top
+        +header()
+
+        .tes
+            include /_include/test/_html_tag
+            include /_include/test/_wordpress
+
+        +footer()
+
+
+
+
+
+
+
+
+
+
+
+
+
+

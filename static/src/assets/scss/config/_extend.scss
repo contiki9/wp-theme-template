@@ -1,0 +1,98 @@
+
+
+/* module
+   ---------------------------------------------------------- */
+.ex-pos-center{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.ex-clearfix {
+  display: block;
+  *zoom: 1;
+  &:after {
+    display: block;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    content: "";
+  }
+}
+.ex-notes{
+  @include cnt-font-size($font-xsml);
+  line-height: 1.3em;
+  > li{
+    text-indent: 1rem;
+    padding-left: -1rem;
+  }
+}
+
+.ex-hover:hover,
+.ex-hover:hover img {
+  filter:alpha(opacity=80);
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  transition: 0.5s;
+}
+
+@include mq(){
+  .ex-sp-hidden{
+    display: none;
+  }
+  .ex-sp-visible{
+    display: block;
+  }
+}
+
+@include mq(pc) {
+  .ex-pc-hidden {
+    display: none;
+  }
+  .ex-pc-visible {
+    display: block;
+  }
+}
+
+//Base Font
+.ex-font-family{
+  font-family: 'Robot','Noto Sans Japanese', sans-serif;
+}
+.ex-font-aws{
+   font-family: FontAwesome;
+   display: inline-block;
+   margin-right:.5em;
+}
+
+//コンテンツの余白
+.ex-sideSpace{
+  @include padding(null 2%);
+}
+
+/* FONTS
+   ---------------------------------------------------------- */
+.ex-font-xxlrg{
+  @include cnt-font-size($font-xlrg*1.5);
+}
+.ex-font-xlrg{
+  @include cnt-font-size($font-xlrg);
+}
+.ex-font-lrg{
+  @include cnt-font-size($font-lrg);
+}
+.ex-font-nml{
+  @include cnt-font-size($font-nml);
+}
+.ex-font-sml{
+  @include cnt-font-size($font-sml);
+}
+.ex-font-xsml{
+  @include cnt-font-size($font-xsml);
+}
+.ex-font-xxsml{
+  @include cnt-font-size($font-xsml*.5);
+}
+.ex-web-font{font-family: 'Inika', serif;}

@@ -1,0 +1,14 @@
+# IntelliJ project files
+.idea/
+*.iml
+out
+gen
+
+# Apply
+/*.cfg
+
+# node
+/node_modules/
+/styleguide/
+/dist/
+
